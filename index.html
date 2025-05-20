@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Real Estate Properties</title>
+  <style>
+    /* Reset and base styles */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    header h1 {
+      margin: 0;
+      font-weight: 700;
+      font-size: 2rem;
+      color: #0077cc;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+    nav button {
+      background-color: #0077cc;
+      border: none;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s;
+    }
+    nav button:hover,
+    nav button.active {
+      background-color: #005fa3;
+    }
+
+    main > section {
+      display: none;
+      max-width: 1200px;
+      margin: 0 auto 50px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+    }
+    main > section.active {
+      display: block;
+    }
+
+    main > section h2 {
+      margin-top: 0;
+      color: #0077cc;
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+    main > section p.description {
+      font-size: 1rem;
+      margin-bottom: 20px;
+      color: #555;
+    }
+
+    .properties-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .property-card {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgb(0 0 0 / 0.1);
+      transition: transform 0.2s ease;
+      cursor: pointer;
+    }
+    .property-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.15);
+    }
+
+    .property-image {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    .property-info {
+      padding: 15px;
+    }
+    .property-info h3 {
+      margin: 0 0 10px 0;
+      font-size: 1.2rem;
+      color: #0077cc;
+    }
+    .property-info p {
+      margin: 4px 0;
+      font-size: 0.9rem;
+      color: #444;
+    }
+    .property-info p.price {
+      margin-top: 12px;
+      font-weight: 700;
+      color: #e63946;
+      font-size: 1.1rem;
+    }
+     /* Lead form styles */
+    .lead-form {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .lead-form h2 {
+      margin-top: 0;
+      color: #0077cc;
+      text-align: center;
+    }
+    .lead-form label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: 600;
+    }
+    .lead-form input, .lead-form select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .lead-form button {
+      margin-top: 15px;
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-weight: 600;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+    .lead-form button:hover {
+      background-color: #005fa3;
+    }
+    .success-message {
+      text-align: center;
+      color: green;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Explore Properties by Location</h1>
+  </header>
+
+  <nav aria-label="Select City">
+    <button class="active" data-target="agra">Agra</button>
+    <button data-target="vrindavan">Vrindavan</button>
+    <button data-target="noida">Noida</button>
+    <button data-target="delhi">Delhi</button>
+    <button data-target="gurugram">Gurugram</button>
+    <button data-target="dubai">Dubai</button>
+    <button data-target="international">International</button>
+  </nav>
+
+  <main>
+    <section id="agra" class="active" aria-labelledby="agra-title">
+      <h2 id="agra-title">Agra Properties</h2>
+      <p class="description">Affordable homes near Taj Mahal and Agra Cantonment.</p>
+      <div class="properties-grid">
+        <article class="property-card" tabindex="0" aria-label="2BHK Apartment in Agra Cantonment">
+          <img class="property-image" src="https://via.placeholder.com/300x160?text=Agra+Apartment" alt="2BHK Apartment in Agra Cantonment" />
+          <div class="property-info">
+            <h3>2BHK Apartment</h3>
+            <p>Near Agra Cantonment, modern design.</p>
+            <p>Area: 1200 sq.ft | BHK: 2</p>
+            <p class="price">₹50 Lakhs</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="vrindavan" aria-labelledby="vrindavan-title">
+      <h2 id="vrindavan-title">Vrindavan Properties</h2>
+      <p class="description">Spiritual and serene homes in the heart of Vrindavan.</p>
+      <div class="properties-grid">
+        <article class="property-card" tabindex="0" aria-label="1BHK Apartment in Vrindavan Center">
+          <img class="property-image" src="https://via.placeholder.com/300x160?text=Vrindavan+Apartment" alt="1BHK Apartment in Vrindavan Center" />
+          <div class="property-info">
+            <h3>1BHK Apartment</h3>
+            <p>Peaceful neighborhood, close to temples.</p>
+            <p>Area: 800 sq.ft | BHK: 1</p>
+            <p class="price">₹35 Lakhs</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="noida" aria-labelledby="noida-title">
+      <h2 id="noida-title">Noida Properties</h2>
+      <p class="description">Modern residential and commercial spaces in Noida sectors 18, 62, and 76.</p>
+      <div class="properties-grid">
+        <article class="property-card" tabindex="0" aria-label="3BHK Apartment in Noida Sector 18">
+          <img class="property-image" src="https://via.placeholder.com/300x160?text=Noida+Apartment" alt="3BHK Apartment in Noida Sector 18" />
+          <div class="property-info">
+            <h3>3BHK Apartment</h3>
+            <p>Close to metro and shopping malls.</p>
+            <p>Area: 1500 sq.ft | BHK: 3</p>
+            <p class="price">₹1 Crore</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="delhi" aria-labelledby="delhi-title">
+      <h2 id="delhi-title">Delhi Properties</h2>
+      <p class="description">Diverse range of properties in South Delhi, Rohini, and more.</p>
+      <div class="properties-grid">
+        <article class="property-card" tabindex="0" aria-label="4BHK Villa in South Delhi">
+          <img class="property-image" src="https://via.placeholder.com/300x160?text=South+Delhi+Villa" alt="4BHK Villa in South Delhi" />
+          <div class="property-info">
+            <h3>Villa in South Delhi</h3>
+            <p>Spacious villa with garden and parking.</p>
+            <p>Area: 2800 sq.ft | BHK: 4</p>
+            <p class="price">₹3 Crores</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="gurugram" aria-labelledby="gurugram-title">
+      <h2 id="gurugram-title">Gurugram Properties</h2>
+      <p class="description">High-end residential and commercial spaces in Gurugram sectors 49, 56, 57, and 66.</p>
+      <div class="properties-grid">
+        <article class="property-card" tabindex="0" aria-label="3BHK Apartment in Sector 49, Gurugram">
+          <img class="property-image" src="https://via.placeholder.com/300x160?text=Sector+49+Apartment" alt="3BHK Apartment in Sector 49, Gurugram" />
+          <div class="property-info">
+            <h3>Sector 49 Apartment</h3>
+            <p>Luxury 3BHK with modern amenities.</p>
+            <p>Area: 1600 sq.ft | BHK: 3</p>
+            <p class="price">₹1.5 Crores</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="dubai" aria-labelledby="dubai-title">
+      <h2 id="dubai-title">Dubai Properties</h2>
+      <p class="description">Premium villas, apartments, and commercial spaces in Dubai Marina, Downtown Dubai, and Palm Jumeirah.</p>
+      <div class="properties-grid">
+        <article class="property-card" tabindex="0" aria-label="2BHK Apartment in Dubai Marina">
+          <img class="property-image" src="https://via.placeholder.com/300x160?text=Dubai+Marina+Apartment" alt="2BHK Apartment in Dubai Marina" />
+          <div class="property-info">
+            <h3>Dubai Marina Apartment</h3>
+            <p>Luxury 2BHK with sea view and gym access.</p>
+            <p>Area: 1400 sq.ft | BHK: 2</p>
+            <p class="price">AED 2.5 Million</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="international" aria-labelledby="international-title">
+      <h2 id="international-title">International Properties</h2>
+      <p class="description">Explore investment opportunities worldwide including the USA, UK, Canada, and Australia.</p>
+      <div class="properties-grid">
+        <article class="property-card" tabindex="0" aria-label="2BHK Apartment in Manhattan, NYC">
+          <img class="property-image" src="https://via.placeholder.com/300x160?text=NYC+Apartment" alt="2BHK Apartment in Manhattan, NYC" />
+          <div class="property-info">
+            <h3>NYC Apartment</h3>
+            <p>Stylish 2BHK apartment in Manhattan.</p>
+            <p>Area: 1200 sq.ft | BHK: 2</p>
+            <p class="price">$1.5 Million</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+   <!-- Lead Form -->
+  <div class="lead-form">
+    <h2>Interested in a Property?</h2>
+    <form id="leadCaptureForm">
+      <label for="name">Your Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" required>
+
+      <label for="city">Interested City</label>
+      <select id="city" name="city" required>
+        <option value="">Select City</option>
+        <option value="Agra">Agra</option>
+        <option value="Vrindavan">Vrindavan</option>
+        <option value="Noida">Noida</option>
+        <option value="Delhi">Delhi</option>
+        <option value="Gurugram">Gurugram</option>
+        <option value="Dubai">Dubai</option>
+        <option value="International">International</option>
+      </select>
+
+      <button type="submit">Submit</button>
+      <p class="success-message" id="successMsg" style="display: none;">Thank you! We'll contact you soon.</p>
+    </form>
+  </div>
+
+  <script>
+    const buttons = document.querySelectorAll('nav button');
+    const sections = document.querySelectorAll('main > section');
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active class from all buttons and sections
+        buttons.forEach(btn => btn.classList.remove('active'));
+        sections.forEach(sec => sec.classList.remove('active'));
+
+        // Add active to clicked button
+        button.classList.add('active');
+
+        // Show corresponding section
+        const targetId = button.getAttribute('data-target');
+        const targetSection = document.getElementById(targetId);
+        if(targetSection) {
+          targetSection.classList.add('active');
+          targetSection.scrollIntoView({behavior: 'smooth'});
+        }
+      });
+    });
+
+        // Lead Form Submission
+    const leadForm = document.getElementById('leadCaptureForm');
+    const successMsg = document.getElementById('successMsg');
+
+    leadForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const formData = {
+        name: this.name.value,
+        email: this.email.value,
+        phone: this.phone.value,
+        city: this.city.value
+      };
+
+      console.log("Lead Captured:", formData);
+
+      // Optionally: send data to server here using fetch()
+
+      this.reset();
+      successMsg.style.display = 'block';
+
+      setTimeout(() => {
+        successMsg.style.display = 'none';
+      }, 4000);
+    });
+
+  </script>
+
+</body>
+</html>
